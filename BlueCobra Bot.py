@@ -42,7 +42,7 @@ class InfoCog(commands.Cog, name='Info'):
 
 @bot.command(name='hello')
 async def hello_command(ctx):
-    await ctx.send('Hello, I am BlueCobra Bot I have Been Created By CyberShark Team!')
+    await ctx.send('Hello, I am BlueCobra Bot I have Been Created By BlueCobra Team!')
 
 
 @bot.command(name='commands')
@@ -112,5 +112,5 @@ async def change_password_command(ctx):
         await ctx.send(f"An error occurred: {e}")
         
 
-bot.run("MTE2NjExMzI5MzYxODkxMzM2MQ.GGZmZw.LaihEEdA6cx2ckfxNcoSjVXNA-ISd0V1ob_owk")
+bot.run("YOUR_API_KEY_HERE")
 
