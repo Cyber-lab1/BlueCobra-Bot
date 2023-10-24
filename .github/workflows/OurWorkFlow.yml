@@ -1,0 +1,42 @@
+name: Our WorkFlow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check-bats-version:
+    name: Check Bats Version
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Bats
+        run: npm install -g bats
+
+      - name: Run Bats Tests
+        run: bats -v
+
+  download-artifact:
+    name: Download Artifact
+    needs: check-bats-version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Bats Artifact
+        if: success()
+        uses: actions/download-artifact@v2
+        with:
+          name: bats
+
+
